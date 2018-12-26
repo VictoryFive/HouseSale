@@ -6,4 +6,7 @@ import com.ssm.bean.Buyer;
 
 public interface UserDao {
 	List<Buyer> selectAllUser();
+	List<Buyer> selectBuyer(String username,String password);
+	List<Buyer> selectSaler(String username,String password);
+	void saveBuyer(Buyer buyer);
 }

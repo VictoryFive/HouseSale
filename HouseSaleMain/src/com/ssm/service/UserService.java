@@ -9,8 +9,8 @@ import com.ssm.bean.Buyer;
 import com.ssm.dao.UserDao;
 
 @Service
-public class UserService implements IUserService{
-	
+public class UserService implements IUserService {
+
 	@Autowired
 	private UserDao userDao;
 
@@ -18,5 +18,23 @@ public class UserService implements IUserService{
 	public List<Buyer> selectAllUser() {
 		return userDao.selectAllUser();
 	}
-	
+
+	public List<Buyer> selectBuyer(String username, String password) {
+
+		return userDao.selectBuyer(username, password);
+	}
+
+	@Override
+	public List<Buyer> selectSaler(String username, String password) {
+
+		return userDao.selectSaler(username, password);
+	}
+
+	@Override
+	public void saveBuyer(Buyer buyer) {
+
+		userDao.saveBuyer(buyer);
+
+	}
+
 }

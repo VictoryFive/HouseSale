@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	成功
+<p>成功</p>
+	
+<%-- 	${name}<br>
+	${age}<br>
+	${gender} --%>
+	
 </body>
 </html>
