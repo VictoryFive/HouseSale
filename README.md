@@ -1,2 +1,0 @@
-# HouseSale
-Team project
