@@ -1,8 +1,5 @@
 package com.ssm.bean;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Saler {
 	private Integer s_id;
 	private String s_name;

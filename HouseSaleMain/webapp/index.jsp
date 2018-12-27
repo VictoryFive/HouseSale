@@ -26,5 +26,6 @@
 	</form>
 	<a href="${basePath}/jsp/register.jsp">注册</a>
 
+	<a href="${basePath}/house">房屋</a>
 </body>
 </html>

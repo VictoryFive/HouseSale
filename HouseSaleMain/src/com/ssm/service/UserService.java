@@ -19,6 +19,7 @@ public class UserService implements IUserService {
 		return userDao.selectAllUser();
 	}
 
+	@Override
 	public List<Buyer> selectBuyer(String username, String password) {
 
 		return userDao.selectBuyer(username, password);
