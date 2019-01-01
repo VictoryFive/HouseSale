@@ -4,9 +4,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ssm.dao.HouseDao">
-	<select id="selectAllHouse" resultType="House">
-		select * from house
+	<select id="selectSidHouse" resultType="House">
+		select * from house where
+		s_id = #{0}
 	</select>
+	<insert id="saveHouse" useGeneratedKeys="true" keyProperty="h_id">
+		insert into house
+		(h_name,h_distric,h_area,h_type,h_RB,h_money,h_design,h_x,h_y,s_id,h_province,h_city,h_date,h_info,h_houseType,h_url)
+		values(#{h_name},#{h_distric},#{h_area},#{h_type},#{h_RB},#{h_money},#{h_design},#{h_x},#{h_y},#{s_id},#{h_province},#{h_city},#{h_date},#{h_info},#{h_houseType},#{h_url})
+	</insert>
+	<delete id="deleteHouseByHid">
+		delete from house where h_id = #{0};
+	</delete>
+
+	<update id="updateHouse">
+		update house set
+		h_name = #{0},h_province =
+		#{1},h_city =
+		#{2},h_distric=#{3},h_area =
+		#{4},
+		h_info = #{5},h_money = #{6} where h_id = #{7};
+	</update>
+
 
 
 </mapper>

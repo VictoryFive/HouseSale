@@ -55,5 +55,10 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-web-4.3.3.RELEASE.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/spring-webmvc-4.3.3.RELEASE.jar" sourcepath="E:/WorkSpace/EclipseForJ2EE-workspace/TestSSM/webapp/WEB-INF/lib/spring-webmvc-4.3.3.RELEASE.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/xpp3-1.1.4c.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/xstream-1.4.10.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/geronimo-jta_1.1_spec-1.1.1.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons-fileupload-1.3.3.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons-io-2.6.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>

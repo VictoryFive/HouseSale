@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.ssm.dao.UserDao">
 	<select id="selectAllUser" 	resultType="Buyer">
-		select * from buyer
+		select * from buyer 
 	</select>
 	<select id="selectBuyer" resultType="Buyer">
 	   select * from buyer where b_username = #{0} and b_password = #{1}
@@ -16,5 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="saveBuyer" useGeneratedKeys="true" keyProperty="b_id">
 	   insert into Buyer (b_name,b_password,b_username,b_age,b_telephone,b_gender)
 	   values(#{b_name},#{b_password},#{b_username},#{b_age},#{b_telephone},#{b_gender})	
+	</insert>
+	<insert id="saveSaler" useGeneratedKeys="true" keyProperty="s_id">
+	   insert into saler (s_name,s_password,s_username,s_age,s_telephone,s_gender)
+	   values(#{s_name},#{s_password},#{s_username},#{s_age},#{s_telephone},#{s_gender})	
 	</insert>
 </mapper>

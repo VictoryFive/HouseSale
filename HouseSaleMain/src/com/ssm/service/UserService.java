@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ssm.bean.Buyer;
+import com.ssm.bean.Saler;
 import com.ssm.dao.UserDao;
 
 @Service
@@ -26,7 +27,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public List<Buyer> selectSaler(String username, String password) {
+	public List<Saler> selectSaler(String username, String password) {
 
 		return userDao.selectSaler(username, password);
 	}
@@ -37,5 +38,14 @@ public class UserService implements IUserService {
 		userDao.saveBuyer(buyer);
 
 	}
+
+	@Override
+	public void saveSaler(Saler saler) {
+		
+		userDao.saveSaler(saler);
+		
+	}
+	
+	
 
 }
