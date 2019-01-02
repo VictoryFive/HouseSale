@@ -12,6 +12,9 @@ public interface IHouseService {
 	void deleteHouseByHid(int hid);
 
 	void updateHouse(String h_name, String h_province, String h_city, String h_distric, Double h_area, String h_info,
-			Double h_money,int h_id);
+			Double h_money, int h_id);
+
+	List<House> searchHouse(String distric, double minarea, double maxarea, double minmoney, double maxmoney,
+			String type, String RB, String EscOrDesc);
 
 }

@@ -15,15 +15,15 @@
 			window.scrollTo(0, 1);
 		}
 </script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui-publish.css" />
-<link href="${pageContext.request.contextPath}/css/style-publish.css" rel='stylesheet' type='text/css' media="all">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/jquery-ui-publish.css" />
+<link href="${pageContext.request.contextPath}/static/css/style-publish.css" rel='stylesheet' type='text/css' media="all">
 <link href="//fonts.googleapis.com/css?family=Cuprum:400,700" rel="stylesheet">
 <title>出租房产</title>
 </head>
 <body>
 	<h1 class="header-w3ls">出  租  房  屋 </h1>
 	<div class="appointment-w3">
-		<form action="${pageContext.request.contextPath}/rentHouse.mvc" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/rentHouse" method="post" enctype="multipart/form-data">
 			<div class="main">
 				<div class="form-left-w3l">
 					<input type="text" class="top-up" name="house_name" placeholder="请输入小区名" required="required" />
@@ -114,8 +114,8 @@
 		<p> &copy; 2018 B&RINDEX.COM All Rights Reserved </p>
 	</div>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=v7ugaj8evae4hfLSRrlxn6cRAYIMixt2"></script>
-	<script type='text/javascript' src='${pageContext.request.contextPath}/js/jquery-2.2.3.min-publish.js'></script>
-	<script src="${pageContext.request.contextPath}/js/jquery-ui-publish.js"></script>
+	<script type='text/javascript' src='${pageContext.request.contextPath}/static/js/jquery-2.2.3.min-publish.js'></script>
+	<script src="${pageContext.request.contextPath}/static/js/jquery-ui-publish.js"></script>
 	<script>
 		$(function() {
 			$("#datepicker,#datepicker1,#datepicker2,#datepicker3")

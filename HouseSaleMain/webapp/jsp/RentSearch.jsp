@@ -159,7 +159,6 @@ a {
 #formation {
 	margin-top: -20px;
 	height: 55px;
-	
 }
 
 #formation li {
@@ -174,7 +173,6 @@ a {
 	color: darkcyan;
 	font-size: 15px;
 	border: none;
-
 }
 
 #mput1, #mput2, #aput1, #aput2 {
@@ -210,7 +208,7 @@ a {
 }
 </style>
 </head>
-<script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 
@@ -410,7 +408,7 @@ a {
 			var y = result.h_y;
 			var con = result.h_info;
 
-			item = "<li id='list_inner1'><div id='list_div' style='width: 300px;'><img id='imgstyle' alt='11' src='.."+url+"'></div>"
+			item = "<li id='list_inner1'><div id='list_div' style='width: 300px;'><img id='imgstyle' alt='11' src='../static"+url+"'></div>"
 					+ "<div id='list_div' style='margin-left: 30px;'>"
 					+ "<a id='mainA' href='onehouse2.jsp?name="
 					+ name
@@ -476,9 +474,9 @@ a {
 		var Aesc = document.getElementById("Aesc").value;
 
 		if (Aesc == "从小到大") {
-			ajaxCondition(0, "h_area");
+			ajaxCondition(0, "h_area0");
 		} else if (Aesc == "从大到小") {
-			ajaxCondition(0, "h_area desc");
+			ajaxCondition(0, "h_area1");
 		} else {
 
 			ajaxCondition(0, 'h_id');
@@ -491,9 +489,9 @@ a {
 		var Mesc = document.getElementById("Mesc").value;
 
 		if (Mesc == "从小到大") {
-			ajaxCondition(0, "h_money");
+			ajaxCondition(0, "h_money0");
 		} else if (Mesc == "从大到小") {
-			ajaxCondition(0, "h_money desc");
+			ajaxCondition(0, "h_money1");
 		} else {
 
 			ajaxCondition(0, 'h_id');
@@ -519,7 +517,7 @@ a {
 
 		$.ajax({
 			type : "post",
-			url : "/ssh/ajaxhouse.mvc",
+			url : "${pageContext.request.contextPath}/ajaxhouse",
 			data : {
 				distric : distric,
 				minmoney : minmoney,
@@ -699,8 +697,7 @@ a {
 		</div>
 
 
-		<ul
-			style="padding-top: 13px; height: 45px;">
+		<ul style="padding-top: 13px; height: 45px;">
 			<li style="font-size: 16px; font-weight: bold; color: sandybrown;">条件：</li>
 			<li id="condition1" style="display: none"><input id="distric"
 				type="text"> <input type="button"
@@ -749,9 +746,9 @@ a {
 
 		<div style="margin-top: 50px;">
 			<input id="pagebtn" type="button" value="首页"
-				onclick="ajaxCondition(0)"> <input id="pagebtn"
-				type="button" value="上一页" onclick="ajaxCondition(2)"> <input
-				id="pagebtn" type="button" value="下一页" onclick="ajaxCondition(1)">
+				onclick="ajaxCondition(0,'h_id')"> <input id="pagebtn"
+				type="button" value="上一页" onclick="ajaxCondition(2,'h_id')"> <input
+				id="pagebtn" type="button" value="下一页" onclick="ajaxCondition(1,'h_id')">
 		</div>
 	</div>
 </body>

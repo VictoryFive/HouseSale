@@ -342,7 +342,7 @@ div#inner {
 			var x = result.h_x;
 			var y = result.h_y;
 			var con = result.h_info;
-			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='.."+url+"'></div>"
+			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='../static"+url+"'></div>"
 					+ "<div id='list_div' style='width:350px;'><ul style='margin-left:35px;'><li id='nli'>"
 					+ "<a id='mainA' href='onehouse2.jsp?name="
 					+ name
@@ -415,7 +415,7 @@ div#inner {
 
 		$.ajax({
 			type : "post",
-			url : "/ssh/ajaxhouse.mvc",
+			url : "${pageContext.request.contextPath}/ajaxhouse",
 			data : {
 				distric : distric,
 				minmoney : minmoney,
@@ -471,10 +471,10 @@ div#inner {
 
 		if (btn.value == "面积") {
 			btn.value = "面积 ↑";
-			ajaxCondition(0, 'h_area desc');
+			ajaxCondition(0, 'h_area0');
 		} else if (btn.value == "面积 ↑") {
 			btn.value = "面积 ↓";
-			ajaxCondition(0, 'h_area');
+			ajaxCondition(0, 'h_area1');
 		} else {
 			btn.value = "面积";
 
@@ -497,10 +497,10 @@ div#inner {
 
 		if (btn1.value == "售价") {
 			btn1.value = "售价 ↑";
-			ajaxCondition(0, 'h_money desc');
+			ajaxCondition(0, 'h_money0');
 		} else if (btn1.value == "售价 ↑") {
 			btn1.value = "售价 ↓";
-			ajaxCondition(0, 'h_money');
+			ajaxCondition(0, 'h_money1');
 		} else {
 			btn1.value = "售价";
 
@@ -640,9 +640,9 @@ div#inner {
 	</div>
 	<ul style="position: absolute; margin-top: -300px;">
 		<li style="float: left; margin-left: 60px;"><input id="pagebtn"
-			type="button" value="◁" onclick="ajaxCondition(2)"></li>
+			type="button" value="◁" onclick="ajaxCondition(2,'h_id')"></li>
 		<li style="float: left; margin-left: 1320px;"><input id="pagebtn"
-			type="button" value="▷" onclick="ajaxCondition(1)"></li>
+			type="button" value="▷" onclick="ajaxCondition(1,'h_id')"></li>
 	</ul>
 
 </body>

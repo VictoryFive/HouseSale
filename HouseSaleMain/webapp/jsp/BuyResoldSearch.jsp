@@ -223,7 +223,7 @@ li {
 }
 </style>
 </head>
-<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../static/js/jquery-2.1.1.min.js"></script>
 <script>
 	window.onload = function() {
 
@@ -378,7 +378,7 @@ li {
 
 	function test() {
 		var distric = document.getElementById("distric").value;
-		
+
 		var money = document.getElementById("money").value;
 		var area = document.getElementById("area").value;
 		var types = document.getElementById("types").value;
@@ -505,7 +505,7 @@ li {
 
 		$.ajax({
 			type : "post",
-			url : "/ssh/ajaxhouse.mvc",
+			url : "${pageContext.request.contextPath}/ajaxhouse",
 			data : {
 				distric : distric,
 				minmoney : minmoney,
@@ -552,16 +552,16 @@ li {
 		a.style.display = "none";
 		$(c).attr("checked", false);
 		$(c + "1").attr("checked", true);
-		ajaxCondition(0);
+		ajaxCondition(0,'h_id');
 	}
 
 	function AEscOrDesc() {
 		var Aesc = document.getElementById("Aesc").value;
 
 		if (Aesc == "从小到大") {
-			ajaxCondition(0, "h_area");
+			ajaxCondition(0, "h_area0");
 		} else if (Aesc == "从大到小") {
-			ajaxCondition(0, "h_area desc");
+			ajaxCondition(0, "h_area1");
 		} else {
 
 			ajaxCondition(0, 'h_id');
@@ -616,7 +616,7 @@ li {
 			var y = result.h_y;
 			var con = result.h_info;
 
-			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='.."+url+"'></div>"
+			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='../static"+url+"'></div>"
 					+ "<div id='list_div'>"
 					+ "<a id='mainA' href='onehouse2.jsp?name="
 					+ name
@@ -894,9 +894,10 @@ li {
 
 		<div style="margin-top: 50px;">
 			<input id="pagebtn" type="button" value="首页"
-				onclick="ajaxCondition(0)"> <input id="pagebtn"
-				type="button" value="上一页" onclick="ajaxCondition(2)"> <input
-				id="pagebtn" type="button" value="下一页" onclick="ajaxCondition(1)">
+				onclick="ajaxCondition(0,'h_id')"> <input id="pagebtn"
+				type="button" value="上一页" onclick="ajaxCondition(2,'h_id')">
+			<input id="pagebtn" type="button" value="下一页"
+				onclick="ajaxCondition(1,'h_id')">
 		</div>
 	</div>
 

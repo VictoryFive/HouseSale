@@ -23,8 +23,48 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{1},h_city =
 		#{2},h_distric=#{3},h_area =
 		#{4},
-		h_info = #{5},h_money = #{6} where h_id = #{7};
+		h_info = #{5},h_money =
+		#{6} where h_id = #{7};
 	</update>
+
+	<select id="searchHouse" resultType="House">
+		select * from house
+		<where>
+			<if test="distric!=''">
+				h_distric = #{distric}
+			</if>
+			<if test="minArea != 0 || maxArea != 0">
+				and h_area between #{minArea} and #{minArea}
+			</if>
+			<if test="minMoney != 0 || maxMoney != 0">
+				and h_money between #{minMoney} and #{maxMoney}
+			</if>
+			<if test="type!=''">
+				and h_type like #{type}
+			</if>
+			<if test="RB!=''">
+				and h_RB = #{RB}
+			</if>
+		</where>
+		order by
+		<choose>
+			<when test="EscOrDesc =='h_area0'">
+				h_area
+			</when>
+			<when test="EscOrDesc =='h_area1'">
+				h_area DESC
+			</when>
+			<when test="EscOrDesc =='h_money0'">
+				h_money
+			</when>
+			<when test="EscOrDesc =='h_money1'">
+				h_money DESC
+			</when>
+			<when test="EscOrDesc =='h_id'">
+				h_id
+			</when>
+		</choose>
+	</select>
 
 
 

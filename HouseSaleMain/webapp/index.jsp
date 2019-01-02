@@ -44,7 +44,14 @@
 								<a
 									href="${pageContext.request.contextPath}/jsp/salerOfHouse.jsp">我的房产</a>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<a href="${pageContext.request.contextPath}/jsp/saleHouse.jsp">发布房源</a>
+									<select
+									onchange="self.location.href=options[selectedIndex].value">
+									<option value="发布房源">发布房源</option>
+									<option
+										value="${pageContext.request.contextPath}/jsp/saleHouse.jsp">发布卖房</option>
+									<option
+										value="${pageContext.request.contextPath}/jsp/rentHouse.jsp">发布租房</option>
+								</select>
 							</c:if>
 						</c:if> <c:if test="${empty userType}">
 							<a href="${pageContext.request.contextPath}/jsp/login.jsp">请先登录
