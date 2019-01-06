@@ -1,11 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#top0 {
+	height: 45px;
+	background-color: #333;
+	margin-bottom: 4px;
+}
+
+#top0 a {
+	font-size: 13px;
+	text-decoration: none;
+	margin-left: 30px;
+	color: #9b9b9b;
+}
+
+#top {
+	margin-top: -10px;
+	height: 400px;
+	/* background-color: #f5f5f6; */
+	background-image: url("../static/images/b5.jpg");
+}
+
+#top a {
+	font-size: 18px;
+	color: ghostwhite;
+	text-decoration: none;
+	margin-left: 40px;
+}
+
+#top a:HOVER {
+	color: #333;
+}
+
+#top0 a:HOVER {
+	color: #f5f5f6;
+}
+
+#top li {
+	float: left;
+}
+
 #up {
 	margin-left: 10%;
 	margin-right: 10%;
@@ -14,11 +59,9 @@
 }
 
 #main {
-	margin-top: 8px;
-	margin-left: 10%;
-	margin-right: 10%;
-	height: 312px;
+	background-color: #f5f5f6;
 	border: solid 1px white;
+	height: 230px;
 }
 
 #up1 {
@@ -27,6 +70,10 @@
 	margin-right: 10%;
 	background-color: darkcyan;
 	margin-top: 12px;
+}
+
+#ul1 {
+	margin-top: 23px;
 }
 
 #up1 li {
@@ -54,12 +101,13 @@
 #main li {
 	list-style-type: none;
 	float: left;
-	margin-left: 30px;
+	margin-left: 50px;
 }
 
 #main a {
 	font-size: 13px;
-	color: darkcyan;
+	color: #333;
+	font-weight: bold;
 }
 
 li {
@@ -71,11 +119,7 @@ a {
 }
 
 #main a:HOVER {
-	color: sandybrown;
-}
-
-#ul1 {
-	margin-top: 20px;
+	color: darkcyan;
 }
 
 #list {
@@ -129,17 +173,19 @@ a {
 	width: 70px;
 	height: 42px;
 	font-size: 15px;
-	color: #232836;
+	color: gray;
+	font-weight: bold;
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
-	border: solid 2px sandybrown;
-	border-top-left-radius: 7px
+	border: solid 1.5px white;
+	border-top-left-radius: 7px;
+	background-color: ghostwhite;
 }
 
 #searchhouse {
 	width: 530px;
 	height: 40px;
-	border: none;
+	border: 1px solid white;
 	background-color: ghostwhite;
 	color: darkcyan;
 	font-size: 20px;
@@ -157,8 +203,10 @@ a {
 }
 
 #formation {
-	margin-top: -20px;
 	height: 55px;
+	border-bottom: solid 5px #333;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 #formation li {
@@ -178,7 +226,7 @@ a {
 #mput1, #mput2, #aput1, #aput2 {
 	width: 100px;
 	height: 20px;
-	border: solid 1.5px darkcyan;
+	border: solid 1.5px #333;
 	border-radius: 5px;
 }
 
@@ -194,9 +242,16 @@ a {
 }
 
 #pagebtn {
-	border: solid 1.5px darkcyan;
-	color: sandybrown;
+	border: none;
+	color: #f5f5f6;
 	font-weight: bold;
+	margin-left: 40px;
+	background-color: #333;
+	color: #f5f5f6;
+	height: 35px;
+	width: 60px;
+	letter-spacing: 2px;
+	font-size: 15px;
 }
 
 #tag li {
@@ -205,6 +260,31 @@ a {
 	float: left;
 	font-size: 13px;
 	border-radius: 2px;
+}
+
+.body-text {
+	color: gray;
+	font-size: 13px;
+}
+
+.body-text1 {
+	color: white;
+	font-size: 17px;
+	margin-left: 30px;
+}
+
+.body-text2 {
+	color: gray;
+	font-size: 15px;
+	margin-left: 30px;
+}
+
+.body-text2:HOVER {
+	color: #f5f5f6;
+}
+
+.body-text1:HOVER {
+	color: black;
 }
 </style>
 </head>
@@ -594,11 +674,34 @@ a {
 </script>
 
 <body>
-	<div id="up">
-		<h1 style="margin-top: 3px; margin-left: 20px; color: darkcyan;">租房</h1>
+	<div id="top0">
+		<div style="margin-left: 12%; padding-top: 10px;">
+			<a href="${pageContext.request.contextPath}/index.jsp">首页</a> <a
+				href="${pageContext.request.contextPath}/jsp/BuyResoldSearch.jsp">二手房</a>
+			<a href="${pageContext.request.contextPath}/jsp/BuyNewSearch.jsp">新房</a>
+			<a href="${pageContext.request.contextPath}/jsp/RentSearch.jsp">租房</a>
+			<a>小区</a> <a>房价</a> <a>工具</a> <a>指南</a> <a>业主</a> <a>经纪人</a>
+			<c:if test="${not empty name}">
+				<a style="margin-left: 200px;">你好，${name}</a>
+				<a href="${pageContext.request.contextPath}/loginout">注销</a>
+			</c:if>
+			<c:if test="${empty name}">
+				<a style="margin-left: 300px;"
+					href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a>
+			</c:if>
+			<a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a>
+			<a href="**">下载APP</a> <a style="margin-left: 50px;">客服热线：400-588-1998</a>
+		</div>
 	</div>
-	<div id="up1">
-		<ul style="padding-left: 100px; padding-top: 20px;">
+	<div id="top">
+		<div style="padding-top: 25px;">
+			<a
+				style="color: #f5f5f6; margin-left: 18%; font-size: 50px; font-weight: bolder; font-style: italic;">租房</a>
+			<a style="margin-left: 150px;"
+				href="${pageContext.request.contextPath}/index.jsp">首页</a> <a>合租</a><a>整租</a><a>租价</a>
+			<a href="${pageContext.request.contextPath}/MapMain.jsp">地图找房</a>
+		</div>
+		<ul style="padding-left: 25%; padding-top: 50px;">
 			<li><select id="con">
 					<option>条件</option>
 					<option>位置</option>
@@ -610,10 +713,9 @@ a {
 			<li><input id="searchbtn" value="搜索" type="button"
 				onclick="SearchList()"></li>
 		</ul>
-
 	</div>
 	<div id="main">
-		<div style="padding-top: 15px; height: 170px;">
+		<div style="padding-top: 15px; margin-left: 12%;">
 			<ul>
 				<li style="font-size: 16px; font-weight: bold; color: sandybrown">区域：</li>
 				<li><a href="javascript:void(0)"
@@ -652,7 +754,7 @@ a {
 					onclick="money(this);return false">5000元以上</a></li>
 				<li><input id="mput1" style="width: 30px;" type="text">
 					- <input id="mput2" style="width: 30px;" type="text"> 元 <input
-					style="width: 50px; height: 25px; background-color: sandybrown; border: none; color: white;"
+					style="width: 50px; height: 25px; background-color: sandybrown; border: none; color: white; margin-left: 20px;"
 					type="button" value="确定" onclick="moneyself()"></li>
 			</ul>
 			<br />
@@ -676,7 +778,7 @@ a {
 					onclick="area(this);return false">200平以上</a></li>
 				<li><input id="aput1" style="width: 30px;" type="text">
 					- <input id="aput2" style="width: 30px;" type="text"> 平 <input
-					style="width: 40px; height: 25px; background-color: sandybrown; border: none; color: white;"
+					style="width: 50px; height: 25px; background-color: sandybrown; border: none; color: white; margin-left: 20px;"
 					type="button" value="确定" onclick="areaself()"></li>
 			</ul>
 			<br />
@@ -693,34 +795,36 @@ a {
 				<li><a href="javascript:void(0)"
 					onclick="types(this);return false">4室以上</a></li>
 			</ul>
-
+			<br />
+			<ul style="margin-top: 25px; height: 30px;">
+				<li style="font-size: 16px; font-weight: bold; color: sandybrown;">条件：</li>
+				<li id="condition1" style="display: none"><input id="distric"
+					type="text"> <input type="button"
+					style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
+					value="X" onclick="closedisplay('condition1','distric')"></li>
+				<li id="condition2" style="display: none"><input id="money"
+					type="text"> <input type="button"
+					style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
+					value="X" onclick="closedisplay('condition2','money')"></li>
+				<li id="condition3" style="display: none"><input id="area"
+					type="text"> <input type="button"
+					style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
+					value="X" onclick="closedisplay('condition3','area')"></li>
+				<li id="condition4" style="display: none"><input id="types"
+					type="text"> <input type="button"
+					style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
+					value="X" onclick="closedisplay('condition4','types')"></li>
+			</ul>
 		</div>
+	</div>
 
 
-		<ul style="padding-top: 13px; height: 45px;">
-			<li style="font-size: 16px; font-weight: bold; color: sandybrown;">条件：</li>
-			<li id="condition1" style="display: none"><input id="distric"
-				type="text"> <input type="button"
-				style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
-				value="X" onclick="closedisplay('condition1','distric')"></li>
-			<li id="condition2" style="display: none"><input id="money"
-				type="text"> <input type="button"
-				style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
-				value="X" onclick="closedisplay('condition2','money')"></li>
-			<li id="condition3" style="display: none"><input id="area"
-				type="text"> <input type="button"
-				style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
-				value="X" onclick="closedisplay('condition3','area')"></li>
-			<li id="condition4" style="display: none"><input id="types"
-				type="text"> <input type="button"
-				style="width: 20px; height: 20px; background-color: red; border-radius: 3px; border: none; color: white;"
-				value="X" onclick="closedisplay('condition4','types')"></li>
-		</ul>
-
+	<div style="margin-top: 20px;">
 		<ul id="formation">
 			<li
-				style="font-size: 16px; font-weight: bold; color: sandybrown; padding-top: 15px;">筛选：</li>
-			<li style="margin-top: 17px;"><a style="font-size: 15px;"
+				style="font-size: 20px; font-weight: bold; color: #333; padding-top: 15px;">筛选：</li>
+			<li style="margin-top: 17px; margin-left: 40px;"><a
+				style="font-size: 15px; color: sandybrown;"
 				href="javascript:void(0)" onclick="defaultEsc()">默认排序</a></li>
 			<li><select id="Aesc" onchange="AEscOrDesc()">
 					<option>面积排序</option>
@@ -734,7 +838,6 @@ a {
 			</select></li>
 		</ul>
 
-
 	</div>
 
 
@@ -743,13 +846,37 @@ a {
 		<ul id="ul">
 			<li></li>
 		</ul>
-
-		<div style="margin-top: 50px;">
+		<div style="margin-top: 50px; margin-left: 70%;">
 			<input id="pagebtn" type="button" value="首页"
 				onclick="ajaxCondition(0,'h_id')"> <input id="pagebtn"
-				type="button" value="上一页" onclick="ajaxCondition(2,'h_id')"> <input
-				id="pagebtn" type="button" value="下一页" onclick="ajaxCondition(1,'h_id')">
+				type="button" value="上一页" onclick="ajaxCondition(2,'h_id')">
+			<input id="pagebtn" type="button" value="下一页"
+				onclick="ajaxCondition(1,'h_id')">
 		</div>
 	</div>
+	<footer style="height: 300px; background-color: #333;">
+		<div style="margin-left: 15%; padding-top: 55px;">
+			<a class="body-text1">网络地图</a><a class="body-text1">了解R&B</a><a
+				class="body-text1">联系我们</a><a class="body-text1">加入我们</a><a
+				class="body-text1">隐私声明</a><a class="body-text1">经纪人登陆</a>
+		</div>
+		<div
+			style="margin-left: 17%; margin-right: 20%; height: 1px; background-color: gray; margin-top: 20px;"></div>
+		<div style="margin-left: 15%; padding-top: 25px;">
+			<a class="body-text2">租房城市</a> <a class="body-text2">热门商圈</a><a
+				class="body-text2">推荐小区</a><a class="body-text2">友情链接</a>
+		</div>
+		<div style="margin-left: 15%; padding-top: 25px;">
+			<a class="body-text2">上海租房</a> <a class="body-text2">北京租房</a><a
+				class="body-text2">青岛租房</a><a class="body-text2">杭州租房</a><a
+				class="body-text2">广州租房</a><a class="body-text2">更多租房</a>
+		</div>
+		<div style="padding-top: 40px; margin-left: 17%;">
+			<a class="body-text">地址/Address:山东省青岛市市南区宁夏路308号&nbsp;&nbsp;|</a> <a
+				class="body-text">电话/Tel:4008-820-820&nbsp;&nbsp;|</a> <a
+				class="body-text last">邮箱/Mail:WeAreBestCowB@163.com&nbsp;&nbsp;|</a>
+			<a class="body-text">&copy; 2018 B&RINDEX.COM All Rights Reserved</a>
+		</div>
+	</footer>
 </body>
 </html>

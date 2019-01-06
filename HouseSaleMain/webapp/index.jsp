@@ -45,7 +45,7 @@
 									href="${pageContext.request.contextPath}/jsp/salerOfHouse.jsp">我的房产</a>
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<select
-									onchange="self.location.href=options[selectedIndex].value">
+									onchange="self.location.href=options[selectedIndex].value" style="font-size: 11.5px;border-color: white;">
 									<option value="发布房源">发布房源</option>
 									<option
 										value="${pageContext.request.contextPath}/jsp/saleHouse.jsp">发布卖房</option>

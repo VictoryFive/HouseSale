@@ -1,16 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#top0 {
+	height: 45px;
+	background-color: #333;
+	margin-bottom: 4px;
+}
+
+#top0 a {
+	font-size: 13px;
+	text-decoration: none;
+	margin-left: 30px;
+	color: #9b9b9b;
+}
+
 #top {
-	height: 50px;
-	margin-left: 7%;
-	margin-right: 7%;
-	border: solid 2px darkcyan;
+	margin-top: -10px;
+	height: 200px;
+	background-color: #f5f5f6;
+	height: 200px;
+	height: 200px;
+}
+
+#top a {
+	font-size: 18px;
+	color: #333;
+	text-decoration: none;
+	margin-left: 40px;
+}
+
+#top a:HOVER {
+	color: darkcyan;
+}
+
+#top0 a:HOVER {
+	color: #f5f5f6;
+}
+
+#top li {
+	float: left;
 }
 
 #top2 {
@@ -21,17 +60,17 @@
 	background-color: darkcyan;
 }
 
-#top2 li {
-	float: left;
-}
-
 #searchhouse {
 	width: 530px;
 	height: 40px;
-	border: none;
+	border-top: 1.5px solid #333;
+	border-bottom: 1.5px solid #333;
+	border-left: none;
+	border-right: none;
 	background-color: ghostwhite;
 	color: darkcyan;
 	font-size: 20px;
+	background-color: ghostwhite;
 }
 
 #searchbtn {
@@ -42,16 +81,14 @@
 	border: none;
 	font-size: 20px;
 	color: white;
-	background-color: sandybrown;
+	background-color: darkcyan;
 }
 
 #searchhome {
-	height: 325px;
-	margin-left: 7%;
+	height: 300px;
+	margin-left: 10%;
 	margin-right: 7%;
 	margin-top: 20px;
-	/* 	border: solid 2px darkcyan;
-	box-shadow: 2px 2px 2px 0px darkgray; */
 }
 
 #searchhome li {
@@ -119,7 +156,7 @@ li {
 #btnmore, #btnmore2 {
 	width: 120px;
 	height: 30px;
-	border: solid 1.5px darkcyan;
+	border: solid 1.5px #333;
 	background-color: white;
 	border-radius: 5px;
 	color: #232836;
@@ -156,11 +193,13 @@ li {
 	width: 70px;
 	height: 42px;
 	font-size: 15px;
-	color: #232836;
+	color: sandybrown;
+	font-weight: bold;
 	border-top-left-radius: 7px;
 	border-bottom-left-radius: 7px;
-	border: solid 2px sandybrown;
-	border-top-left-radius: 7px
+	border: solid 2px darkcyan;
+	border-top-left-radius: 7px;
+	border-top-left-radius: 7px;
 }
 
 #deletebtn {
@@ -178,7 +217,7 @@ li {
 #formation {
 	height: 50px;
 	margin-top: 0px;
-	border-bottom: solid 5px darkcyan;
+	border-bottom: solid 5px #333;
 }
 
 #formation li {
@@ -209,9 +248,16 @@ li {
 }
 
 #pagebtn {
-	border: solid 1.5px darkcyan;
-	color: sandybrown;
+	border: none;
+	color: #f5f5f6;
 	font-weight: bold;
+	margin-left: 40px;
+	background-color: #333;
+	color: #f5f5f6;
+	height: 35px;
+	width: 60px;
+	letter-spacing: 2px;
+	font-size: 15px;
 }
 
 #tag li {
@@ -220,6 +266,31 @@ li {
 	float: left;
 	font-size: 13px;
 	border-radius: 2px;
+}
+
+.body-text {
+	color: gray;
+	font-size: 13px;
+}
+
+.body-text1 {
+	color: white;
+	font-size: 17px;
+	margin-left: 30px;
+}
+
+.body-text2 {
+	color: gray;
+	font-size: 15px;
+	margin-left: 30px;
+}
+
+.body-text2:HOVER {
+	color: #f5f5f6;
+}
+
+.body-text1:HOVER {
+	color: black;
 }
 </style>
 </head>
@@ -552,7 +623,7 @@ li {
 		a.style.display = "none";
 		$(c).attr("checked", false);
 		$(c + "1").attr("checked", true);
-		ajaxCondition(0,'h_id');
+		ajaxCondition(0, 'h_id');
 	}
 
 	function AEscOrDesc() {
@@ -679,11 +750,35 @@ li {
 	}
 </script>
 <body>
-	<div id="top">
-		<h1 style="margin-top: 3px; margin-left: 20px; color: darkcyan;">二手房</h1>
+	<div id="top0">
+		<div style="margin-left: 12%; padding-top: 10px;">
+			<a href="${pageContext.request.contextPath}/index.jsp">首页</a> <a
+				href="${pageContext.request.contextPath}/jsp/BuyResoldSearch.jsp">二手房</a>
+			<a href="${pageContext.request.contextPath}/jsp/BuyNewSearch.jsp">新房</a>
+			<a href="${pageContext.request.contextPath}/jsp/RentSearch.jsp">租房</a>
+			<a>小区</a> <a>房价</a> <a>工具</a> <a>指南</a> <a>业主</a> <a>经纪人</a>
+			<c:if test="${not empty name}">
+				<a style="margin-left: 200px;">你好，${name}</a>
+				<a href="${pageContext.request.contextPath}/loginout">注销</a>
+			</c:if>
+			<c:if test="${empty name}">
+				<a style="margin-left: 300px;"
+					href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a>
+			</c:if>
+			<a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a>
+			<a href="**">下载APP</a> <a style="margin-left: 50px;">客服热线：400-588-1998</a>
+		</div>
 	</div>
-	<div id="top2">
-		<ul style="padding-left: 100px; padding-top: 30px;">
+	<div id="top">
+		<div style="padding-top: 25px;">
+			<a
+				style="color: #333; margin-left: 18%; font-size: 50px; font-weight: bolder; font-style: italic;">二手房</a>
+			<a style="margin-left: 150px;"
+				href="${pageContext.request.contextPath}/index.jsp">首页</a> <a>在售</a><a>小区</a><a>房价</a>
+			<a href="${pageContext.request.contextPath}/MapMain.jsp">地图找房</a>
+		</div>
+
+		<ul style="padding-left: 25%; padding-top: 40px;">
 			<li><select id="con">
 					<option>条件</option>
 					<option>位置</option>
@@ -697,8 +792,9 @@ li {
 		</ul>
 
 	</div>
+
 	<div id="searchhome">
-		<ul style="padding-top: 20px;">
+		<ul style="padding-top: 30px;">
 			<li
 				style="width: 70px; color: sandybrown; font-size: 18px; font-weight: bold; margin-top: -5px;">位置&nbsp:</li>
 			<li><input name="distric" id="Dchecked1" type="radio" value=""
@@ -724,7 +820,7 @@ li {
 			<li><input id="Dchecked" name="distric" type="radio" value="莱西区"
 				onclick="printDistricInfo(this)">莱西</li>
 		</ul>
-		<ul style="padding-top: 30px;">
+		<ul style="padding-top: 50px;">
 			<li
 				style="width: 70px; color: sandybrown; font-size: 18px; font-weight: bold; margin-top: -5px;">售价&nbsp:</li>
 			<li><input id="mchecked1" name="money" type="radio" value=""
@@ -741,10 +837,10 @@ li {
 				value="200-300万" onclick="printMoneyInfo(this)">200-300万</li>
 			<li><input id="mchecked" name="money" type="radio"
 				value="300-500万" onclick="printMoneyInfo(this)">300-500万</li>
-			<li style="margin-left: 80px;"><input id="btnmore" type="button"
+			<li style="margin-left: 50px;"><input id="btnmore" type="button"
 				value="+ 更多及自定义" onclick="showMore()"></li>
 		</ul>
-		<ul id="show1" style="padding-top: 20px; display: none">
+		<ul id="show1" style="padding-top: 35px; display: none">
 			<li><input id="mchecked" name="money" type="radio"
 				value="500万以上" onclick="printMoneyInfo(this)">500万以上</li>
 			<li style="width: 400px;"><input id="mput1" type="text">
@@ -752,7 +848,7 @@ li {
 				id="rigthbtn" type="button" value="确定" onclick="moneyself()"></li>
 		</ul>
 
-		<ul style="padding-top: 30px;">
+		<ul style="padding-top: 50px;">
 			<li
 				style="width: 70px; color: sandybrown; font-size: 18px; font-weight: bold; margin-top: -5px;">面积&nbsp:</li>
 			<li><input id="achecked1" name="area" type="radio" value=""
@@ -772,7 +868,7 @@ li {
 			<li style="margin-left: 30px;"><input id="btnmore2"
 				type="button" value="+ 更多及自定义" onclick="showMore2()"></li>
 		</ul>
-		<ul id="show2" style="padding-top: 30px; display: none">
+		<ul id="show2" style="padding-top: 35px; display: none">
 			<li><input id="achecked" name="area" type="radio"
 				value="150-170平" onclick="printAreaInfo(this)">150-200平</li>
 			<li><input id="achecked" name="area" type="radio" value="200平以上"
@@ -782,7 +878,7 @@ li {
 				id="rigthbtn" type="button" value="确定" onclick="areaself()"></li>
 		</ul>
 
-		<ul style="padding-top: 30px;">
+		<ul style="padding-top: 50px;">
 			<li
 				style="width: 70px; color: sandybrown; font-size: 18px; font-weight: bold; margin-top: -5px;">房型&nbsp:</li>
 			<li><input id="tchecked1" name="types" type="radio" value=""
@@ -799,7 +895,7 @@ li {
 				onclick="printTypeInfo(this)">五室及以上</li>
 		</ul>
 
-		<ul style="padding-top: 30px;">
+		<ul style="padding-top: 50px;">
 			<li
 				style="width: 70px; color: sandybrown; font-size: 18px; font-weight: bold; margin-top: -5px;">条件&nbsp:</li>
 			<li id="condition1" style="display: none; width: 150px;"><input
@@ -821,8 +917,7 @@ li {
 
 	<div id="list">
 		<ul id="formation">
-			<li style="margin-left: -40px;"><a href="javascript:void(0)"
-				onclick="defaultEsc()">默认排序</a></li>
+			<li><a href="javascript:void(0)" onclick="defaultEsc()">默认排序</a></li>
 			<li><select id="Aesc" onchange="AEscOrDesc()">
 					<option>面积排序</option>
 					<option>从小到大</option>
@@ -892,7 +987,7 @@ li {
 
 
 
-		<div style="margin-top: 50px;">
+		<div style="margin-top: 50px; margin-left: 70%;">
 			<input id="pagebtn" type="button" value="首页"
 				onclick="ajaxCondition(0,'h_id')"> <input id="pagebtn"
 				type="button" value="上一页" onclick="ajaxCondition(2,'h_id')">
@@ -901,6 +996,72 @@ li {
 		</div>
 	</div>
 
+	<div style="height: 280px; background-color: #f5f5f6; margin-top: 40px">
+		<h2 style="color: #333; margin-left: 15%; padding-top: 30px;">推荐楼盘</h2>
+		<div style="margin-top: 20px; margin-left: 13%; float: left;">
+			<img alt="11" src="../static/images/i.jpg"
+				style="width: 200px; height: 150px;">
+			<p style="color: #333; font-size: 14px;">
+				<span style="color: #db4c3f;">18999</span>&nbsp;&nbsp;元/平
+			</p>
+		</div>
+		<div style="margin-top: 20px; margin-left: 30px; float: left;">
+			<img alt="11" src="../static/images/q.jpg"
+				style="width: 200px; height: 150px;">
+			<p style="color: #333; font-size: 14px;">
+				<span style="color: #db4c3f;">22999</span>&nbsp;&nbsp;元/平
+			</p>
+		</div>
+		<div style="margin-top: 20px; margin-left: 30px; float: left;">
+			<img alt="11" src="../static/images/r.jpg"
+				style="width: 200px; height: 150px;">
+			<p style="color: #333; font-size: 14px;">
+				<span style="color: #db4c3f;">16988</span>&nbsp;&nbsp;元/平
+			</p>
+		</div>
+		<div style="margin-top: 20px; margin-left: 30px; float: left;">
+			<img alt="11" src="../static/images/y.jpg"
+				style="width: 200px; height: 150px;">
+			<p style="color: #333; font-size: 14px;">
+				<span style="color: #db4c3f;">26998</span>&nbsp;&nbsp;元/平
+			</p>
+		</div>
+		<div style="margin-top: 20px; margin-left: 30px; float: left;">
+			<img alt="11" src="../static/images/u.jpg"
+				style="width: 200px; height: 150px;">
+			<p style="color: #333; font-size: 14px;">
+				<span style="color: #db4c3f;">15999</span>&nbsp;&nbsp;元/平
+			</p>
+		</div>
+	</div>
+
+
+
+	<footer style="height: 300px; background-color: #333;">
+		<div style="margin-left: 15%; padding-top: 55px;">
+			<a class="body-text1">网络地图</a><a class="body-text1">了解R&B</a><a
+				class="body-text1">联系我们</a><a class="body-text1">加入我们</a><a
+				class="body-text1">隐私声明</a><a class="body-text1">经纪人登陆</a>
+		</div>
+		<div
+			style="margin-left: 17%; margin-right: 20%; height: 1px; background-color: gray; margin-top: 20px;"></div>
+		<div style="margin-left: 15%; padding-top: 25px;">
+			<a class="body-text2">城市二手房</a> <a class="body-text2">商圈二手房</a><a
+				class="body-text2">热门小区二手房</a><a class="body-text2">新房楼盘</a><a
+				class="body-text2">推荐楼盘</a><a class="body-text2">人气楼盘</a>
+		</div>
+		<div style="margin-left: 15%; padding-top: 25px;">
+			<a class="body-text2">上海二手房</a> <a class="body-text2">北京二手房</a><a
+				class="body-text2">青岛二手房</a><a class="body-text2">杭州二手房</a><a
+				class="body-text2">广州二手房</a><a class="body-text2">更多二手房</a>
+		</div>
+		<div style="padding-top: 40px; margin-left: 17%;">
+			<a class="body-text">地址/Address:山东省青岛市市南区宁夏路308号&nbsp;&nbsp;|</a> <a
+				class="body-text">电话/Tel:4008-820-820&nbsp;&nbsp;|</a> <a
+				class="body-text last">邮箱/Mail:WeAreBestCowB@163.com&nbsp;&nbsp;|</a>
+			<a class="body-text">&copy; 2018 B&RINDEX.COM All Rights Reserved</a>
+		</div>
+	</footer>
 
 </body>
 </html>

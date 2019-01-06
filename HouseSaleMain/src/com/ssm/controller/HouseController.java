@@ -90,7 +90,7 @@ public class HouseController {
 			house_x = Double.parseDouble(fileItem11.getString("utf-8"));
 			house_y = Double.parseDouble(fileItem12.getString("utf-8"));
 			// 得到文件的保存路径
-			String root = request.getServletContext().getRealPath("/images/");
+			String root = request.getServletContext().getRealPath("/static/images/");
 			// 生成二级目录
 			String filename = fileItem9.getName();
 			// 处理文件名为绝对路径的问题
@@ -109,7 +109,7 @@ public class HouseController {
 			dirFile.mkdirs();
 			// 创建最后的目标文件名，病连起来形成最后路径
 			File destFile = new File(dirFile, savename);
-			house_url = destFile.toString().substring(destFile.toString().indexOf("\\images")).replaceAll("\\\\", "/");
+			house_url = destFile.toString().substring(destFile.toString().indexOf("\\static")).replaceAll("\\\\", "/");
 			System.out.println(house_url);
 			fileItem9.write(destFile);
 		} catch (FileUploadException e) {
@@ -196,7 +196,7 @@ public class HouseController {
 			house_x = Double.parseDouble(fileItem12.getString("utf-8"));
 			house_y = Double.parseDouble(fileItem13.getString("utf-8"));
 			// 得到文件的保存路径
-			String root = request.getServletContext().getRealPath("/images/");
+			String root = request.getServletContext().getRealPath("/static/images/");
 			// 生成二级目录
 			String filename = fileItem10.getName();
 			// 处理文件名为绝对路径的问题
@@ -215,8 +215,8 @@ public class HouseController {
 			dirFile.mkdirs();
 			// 创建最后的目标文件名，病连起来形成最后路径
 			File destFile = new File(dirFile, savename);
-			house_url = destFile.toString().substring(destFile.toString().indexOf("\\images")).replaceAll("\\\\", "/");
-			;
+			house_url = destFile.toString().substring(destFile.toString().indexOf("\\static")).replaceAll("\\\\", "/");
+			System.out.println(house_url);
 			fileItem10.write(destFile);
 		} catch (FileUploadException e) {
 			e.printStackTrace();

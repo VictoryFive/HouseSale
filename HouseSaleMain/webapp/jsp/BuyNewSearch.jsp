@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,11 +12,29 @@
 	padding: 0px;
 }
 
+#top0 {
+	height: 35px;
+	box-shadow: 0 1px 0 0 #eee;
+	margin-bottom: 8px;
+}
+
+#top0 a {
+	font-size: 13px;
+	text-decoration: none;
+	margin-left: 30px;
+	color: #9b9b9b;
+}
+
 #top {
-	height: 50px;
-	margin-left: 10%;
-	margin-right: 10%;
-	background-color: darkcyan;
+	height: 60px;
+	background-color: #333;
+}
+
+#top a {
+	font-size: 18px;
+	color: white;
+	text-decoration: none;
+	margin-left: 40px;
 }
 
 #top2 {
@@ -68,7 +87,7 @@ li {
 
 #mainA {
 	font-size: 28px;
-	color: #333;
+	color: black;
 	font-weight: bold;
 	text-decoration: none;
 	letter-spacing: 2px;
@@ -119,6 +138,14 @@ li {
 	margin-left: 20px;
 }
 
+#list_inner2 {
+	margin-top: 20px;
+	height: 300px;
+	width: 250px;
+	background-color: #f7f7f7;
+	margin-left: 20px;
+}
+
 #ul {
 	height: 490px;
 }
@@ -131,7 +158,7 @@ li {
 #formation {
 	height: 50px;
 	margin-top: 20px;
-	border-bottom: solid 5px darkcyan;
+	border-bottom: solid 5px #333;
 }
 
 #formation li {
@@ -155,10 +182,11 @@ li {
 	width: 90px;
 	border: none;
 	background-color: white;
+	color: gray;
 }
 
 #pagebtn {
-	color: sandybrown;
+	color: #333;
 	font-weight: bold;
 	font-size: 50px;
 	border: none;
@@ -167,8 +195,6 @@ li {
 
 #ad_img {
 	margin-top: 5px;
-	margin-left: 10%;
-	margin-right: 10%;
 	height: 450px;
 }
 
@@ -191,6 +217,23 @@ div#inner {
 	position: relative;
 	top: 430px;
 	left: 520px;
+}
+
+.body-text {
+	color: gray;
+	font-size: 13px;
+}
+
+.body-text1 {
+	color: white;
+	font-size: 17px;
+	margin-left: 30px;
+}
+
+.body-text2 {
+	color: gray;
+	font-size: 15px;
+	margin-left: 30px;
 }
 </style>
 </head>
@@ -529,10 +572,39 @@ div#inner {
 				+ picName + ")";
 
 	}
+
+	function displayDiv() {
+		var c = document.getElementById("likers");
+		c.style.display = "block";
+	}
 </script>
 <body>
+	<div id="top0">
+		<div style="margin-left: 12%; padding-top: 7px;">
+			<a href="${pageContext.request.contextPath}/index.jsp">首页</a> <a
+				href="${pageContext.request.contextPath}/jsp/BuyResoldSearch.jsp">二手房</a>
+			<a href="${pageContext.request.contextPath}/jsp/BuyNewSearch.jsp">新房</a>
+			<a href="${pageContext.request.contextPath}/jsp/RentSearch.jsp">租房</a>
+			<a>小区</a> <a>房价</a> <a>工具</a> <a>指南</a> <a>业主</a> <a>经纪人</a>
+			<c:if test="${not empty name}">
+				<a style="margin-left: 350px;">你好，${name}</a>
+				<a href="${pageContext.request.contextPath}/loginout">注销</a>
+			</c:if>
+			<c:if test="${empty name}">
+				<a style="margin-left: 350px;"
+					href="${pageContext.request.contextPath}/jsp/login.jsp">登录</a>
+			</c:if>
+			<a href="${pageContext.request.contextPath}/jsp/register.jsp">注册</a>
+			<a href="**">下载APP</a>
+		</div>
+
+	</div>
 	<div id="top">
-		<h1 style="color: white; margin-left: 30px;">新房</h1>
+		<a
+			style="color: white; margin-left: 18%; font-size: 40px; ont-weight: bolder;font-style: italic;">新房</a>
+		<a style="margin-left: 200px;"
+			href="${pageContext.request.contextPath}/index.jsp">首页</a> <a>楼盘</a>
+		<a>在售</a> <a href="${pageContext.request.contextPath}/MapMain.jsp">地图找房</a> <a style="margin-left: 25%;">客服热线：400-588-1998</a>
 	</div>
 
 	<div id="ad_img" style="background-image: url(../static/images/9.jpg);">
@@ -594,7 +666,11 @@ div#inner {
 
 	</div>
 	<div id="list">
+
+		<h1
+			style="padding-top: 20px; margin-left: 43%; letter-spacing: 15px; font-style: 微软雅黑; color: #333">楼盘精选</h1>
 		<div style="height: 70px;">
+
 			<ul id="formation">
 				<li id="li1" style="margin-left: 0px; background-color: sandybrown;"><a
 					id="lia" onclick="defaultEsc()" href="javascript:void(0)">默认排序</a></li>
@@ -644,6 +720,155 @@ div#inner {
 		<li style="float: left; margin-left: 1320px;"><input id="pagebtn"
 			type="button" value="▷" onclick="ajaxCondition(1,'h_id')"></li>
 	</ul>
+
+	<div
+		style="margin-left: 10%; margin-right: 10%; height: 20px; font-size: 25px; margin-top: 20px; margin-bottom: 10px;">----------------------------------------------------------------------------------------------------------------</div>
+	<div style="height: 70px;">
+
+		<h1
+			style="padding-top: 20px; margin-left: 44.5%; letter-spacing: 15px; font-style: 微软雅黑; color: #333">楼盘推荐</h1>
+	</div>
+
+
+	<div
+		style="height: 450px; margin-left: 11%; margin-right: 10%; margin-top: 35px;">
+		<ul>
+			<li style="float: left;">
+				<div style="margin-left: 15px;">
+					<img style="width: 350px; height: 300px;" alt="11"
+						src="../static/images/r.jpg">
+				</div>
+				<div style="margin-left: 30px;">
+					<ul>
+						<li id="nli"><a id="mainA">荣安水木清华</a><span
+							style="border: solid 1px #269CFF; margin-left: 100px; color: #269CFF">住宅区</span></li>
+						<li id="nli" style="margin-top: 15px;"><span id="span1"
+							style="font-size: 20px;">▶</span><span id="span2">崂山区</span></li>
+						<li id="nli"><span id="span1">均价:</span><span id="span2"
+							style="color: #f15044; font-weight: bold;">18990元/平</span></li>
+
+					</ul>
+				</div>
+			</li>
+			<li style="float: left; margin-left: 42px;"><div
+					style="margin-left: 15px;">
+					<img style="width: 350px; height: 300px;" alt="11"
+						src="../static/images/e.jpg">
+				</div>
+				<div style="margin-left: 30px;">
+					<ul>
+						<li id="nli"><a id="mainA">德胜水蓉家苑</a><span
+							style="border: solid 1px #269CFF; margin-left: 100px; color: #269CFF">别墅区</span></li>
+						<li id="nli" style="margin-top: 15px;"><span id="span1"
+							style="font-size: 20px;">▶</span><span id="span2">市南区</span></li>
+						<li id="nli"><span id="span1">均价:</span><span id="span2"
+							style="color: #f15044; font-weight: bold;">28999元/平</span></li>
+					</ul>
+				</div></li>
+			<li style="float: left; margin-left: 42px;"><div
+					style="margin-left: 15px;">
+					<img style="width: 350px; height: 300px;" alt="11"
+						src="../static/images/w.jpg">
+				</div>
+				<div style="margin-left: 30px;">
+					<ul>
+						<li id="nli"><a id="mainA">希尔芙蓉嘉苑</a><span
+							style="border: solid 1px #269CFF; margin-left: 100px; color: #269CFF">商业区</span></li>
+						<li id="nli" style="margin-top: 15px;"><span id="span1"
+							style="font-size: 20px;">▶</span><span id="span2">市北区</span></li>
+						<li id="nli"><span id="span1">均价:</span><span id="span2"
+							style="color: #f15044; font-weight: bold;">17989元/平</span></li>
+					</ul>
+				</div></li>
+
+		</ul>
+	</div>
+	<div id="likers"
+		style="height: 450px; margin-left: 11%; margin-right: 10%; margin-top: 35px; display: none;">
+		<ul>
+			<li style="float: left;">
+				<div style="margin-left: 15px;">
+					<img style="width: 350px; height: 300px;" alt="11"
+						src="../static/images/r.jpg">
+				</div>
+				<div style="margin-left: 30px;">
+					<ul>
+						<li id="nli"><a id="mainA">荣安水木清华</a><span
+							style="border: solid 1px #269CFF; margin-left: 100px; color: #269CFF">住宅区</span></li>
+						<li id="nli" style="margin-top: 15px;"><span id="span1"
+							style="font-size: 20px;">▶</span><span id="span2">崂山区</span></li>
+						<li id="nli"><span id="span1">均价:</span><span id="span2"
+							style="color: #f15044; font-weight: bold;">18990元/平</span></li>
+
+					</ul>
+				</div>
+			</li>
+			<li style="float: left; margin-left: 42px;"><div
+					style="margin-left: 15px;">
+					<img style="width: 350px; height: 300px;" alt="11"
+						src="../static/images/e.jpg">
+				</div>
+				<div style="margin-left: 30px;">
+					<ul>
+						<li id="nli"><a id="mainA">德胜水蓉家苑</a><span
+							style="border: solid 1px #269CFF; margin-left: 100px; color: #269CFF">别墅区</span></li>
+						<li id="nli" style="margin-top: 15px;"><span id="span1"
+							style="font-size: 20px;">▶</span><span id="span2">市南区</span></li>
+						<li id="nli"><span id="span1">均价:</span><span id="span2"
+							style="color: #f15044; font-weight: bold;">28999元/平</span></li>
+					</ul>
+				</div></li>
+			<li style="float: left; margin-left: 42px;"><div
+					style="margin-left: 15px;">
+					<img style="width: 350px; height: 300px;" alt="11"
+						src="../static/images/w.jpg">
+				</div>
+				<div style="margin-left: 30px;">
+					<ul>
+						<li id="nli"><a id="mainA">希尔芙蓉嘉苑</a><span
+							style="border: solid 1px #269CFF; margin-left: 100px; color: #269CFF">商业区</span></li>
+						<li id="nli" style="margin-top: 15px;"><span id="span1"
+							style="font-size: 20px;">▶</span><span id="span2">市北区</span></li>
+						<li id="nli"><span id="span1">均价:</span><span id="span2"
+							style="color: #f15044; font-weight: bold;">17989元/平</span></li>
+					</ul>
+				</div></li>
+
+		</ul>
+	</div>
+
+
+
+	<div
+		style="height: 30px; margin-left: 10%; margin-right: 10%; border: 2px solid gray; margin-bottom: 25px; padding-top: 7px; margin-top: 10px;">
+		<input type="button" onclick="displayDiv()" value="查看更多∨"
+			style="background-color: white; border: none; margin-left: 46%; letter-spacing: 5px; color: gray">
+	</div>
+	<footer style="height: 300px; background-color: #333;">
+		<div style="margin-left: 15%; padding-top: 55px;">
+			<a class="body-text1">新房合作</a><a class="body-text1">了解R&B</a><a
+				class="body-text1">联系我们</a><a class="body-text1">加入我们</a><a
+				class="body-text1">隐私声明</a><a class="body-text1">经纪人登陆</a>
+		</div>
+		<div
+			style="margin-left: 17%; margin-right: 20%; height: 1px; background-color: gray; margin-top: 20px;"></div>
+		<div style="margin-left: 15%; padding-top: 25px;">
+			<a class="body-text2">热门城市新房</a> <a class="body-text2">热门城市楼盘</a><a
+				class="body-text2">热门楼盘</a><a class="body-text2">推荐城市新房</a><a
+				class="body-text2">推荐楼盘</a><a class="body-text2">人气楼盘</a>
+		</div>
+		<div style="margin-left: 15%; padding-top: 25px;">
+			<a class="body-text2">上海新房</a> <a class="body-text2">北京新房</a><a
+				class="body-text2">青岛新房</a><a class="body-text2">杭州新房</a><a
+				class="body-text2">广州新房</a><a class="body-text2">更多新房</a>
+		</div>
+		<div style="padding-top: 40px; margin-left: 17%;">
+			<a class="body-text">地址/Address:山东省青岛市市南区宁夏路308号&nbsp;&nbsp;|</a> <a
+				class="body-text">电话/Tel:4008-820-820&nbsp;&nbsp;|</a> <a
+				class="body-text last">邮箱/Mail:WeAreBestCowB@163.com&nbsp;&nbsp;|</a>
+			<a class="body-text">&copy; 2018 B&RINDEX.COM All Rights Reserved</a>
+		</div>
+	</footer>
 
 </body>
 </html>

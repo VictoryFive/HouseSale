@@ -174,9 +174,9 @@
 	            var addComp = rs.addressComponents;  
 	            var address =  addComp.province + addComp.city +addComp.district ;  
 	            if (confirm("确定要地址是" + address + "?")) {  
-	                document.getElementById('house_distric').value = addComp.district;  
-	                document.getElementById('house_province').value = addComp.province;
-	                document.getElementById('house_city').value = addComp.city;
+	                document.getElementById("house_distric").value = addComp.district;  
+	                document.getElementById("house_province").value = addComp.province;
+	                document.getElementById("house_city").value = addComp.city;
 	            }  
 	        });  
 	        addMarker(e.point);  

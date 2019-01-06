@@ -11,18 +11,13 @@
 	
 	
 	
+	
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
-
-		
-		
-		
-		
-		
 
 
 </script>
@@ -46,8 +41,9 @@
 						placeholder="请输入小区名" required="required" />
 				</div>
 				<div class="form-right-w3ls ">
-					<!-- <input type="text" class="top-up" id="house_province" name="house_province" placeholder="所在省份" required="required" /> -->
-					<select class="form-control" name="house_province"
+					<input type="text" class="top-up" id="house_province"
+						name="house_province" placeholder="所在省份" required="required" />
+					<!-- <select class="form-control" name="house_province" id = 
 						required="required">
 						<option value="none">所在省份</option>
 						<option value="山东">山东省</option>
@@ -84,7 +80,7 @@
 						<option value="香港">香港</option>
 						<option value="澳门">澳门</option>
 						<option value="台湾">台湾</option>
-					</select>
+					</select> -->
 					<!-- <div class="clearfix" ></div> -->
 				</div>
 			</div>
@@ -242,9 +238,9 @@
 								var address = addComp.province + addComp.city
 										+ addComp.district;
 								if (confirm("确定要地址是" + address + "?")) {
-									document.getElementById('house_distric').value = addComp.district;
-									document.getElementById('house_province').value = addComp.province;
-									document.getElementById('house_city').value = addComp.city;
+									document.getElementById("house_distric").value = addComp.district;
+									document.getElementById("house_province").value = addComp.province;
+									document.getElementById("house_city").value = addComp.city;
 								}
 							});
 			addMarker(e.point);
