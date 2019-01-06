@@ -65,6 +65,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</when>
 		</choose>
 	</select>
+	
+	<select id="find" resultType="House">
+select * from house 
+</select>
+
+<select id="find2" resultType="House">
+select * from house where h_money  between #{0} and #{1}	
+</select>
+
+<select id="find3" resultType="House">
+select * from house where h_area  between #{0} and #{1}	
+</select>
 
 
 
