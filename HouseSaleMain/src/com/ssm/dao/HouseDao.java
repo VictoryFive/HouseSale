@@ -29,13 +29,13 @@ public interface HouseDao {
 	List<House> find6(double x,double y);
 	
 	
-
-	List<House> find2();
+//≤‚ ‘
+	/*List<House> find2();
 	List<House> find8(double a,double b);
 	List<House> find4(double a,double b);
 	List<House> find5(String a);
 	List<House> find6(double a1,double a2,double b1,double b2);
-	List<House> find7(double x,double y);
+	List<House> find7(double x,double y);*/
 	
 	
 	
