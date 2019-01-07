@@ -687,9 +687,9 @@ li {
 			var y = result.h_y;
 			var con = result.h_info;
 
-			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='../static"+url+"'></div>"
+			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='.."+url+"'></div>"
 					+ "<div id='list_div'>"
-					+ "<a id='mainA' href='onehouse2.jsp?name="
+					+ "<a id='mainA' href='../onehouse.jsp?name="
 					+ name
 					+ "&add="
 					+ add

@@ -16,5 +16,14 @@ public interface IHouseService {
 
 	List<House> searchHouse(String distric, double minarea, double maxarea, double minmoney, double maxmoney,
 			String type, String RB, String EscOrDesc);
+	
+	//
+	List<House> find();
+
+	List<House> find2(double[] a,double[] b);
+	List<House> find3(double[] a,double[] b);
+	List<House> find4(String[] a);
+	List<House> find5(double a1,double a2,double b1,double b2);
+	List<House> find6(double x,double y);
 
 }

@@ -2,6 +2,7 @@ package com.ssm.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ssm.bean.House;
 import com.ssm.service.IHouseService;
@@ -56,7 +59,7 @@ public class HouseController {
 		Double house_y = null;
 
 		// 获取工厂，设置缓存大小与临时目录
-		DiskFileItemFactory factory = new DiskFileItemFactory(20 * 1024, new File("F:/temp"));
+		DiskFileItemFactory factory = new DiskFileItemFactory(20 * 1024, new File("E:/temp"));
 		// 获取解析器，设置数据大小限制
 		ServletFileUpload sfu = new ServletFileUpload(factory);
 		sfu.setFileSizeMax(1024 * 1024 * 1024);// 设置单个文件的限制大小
@@ -160,7 +163,7 @@ public class HouseController {
 		Double house_x = null;
 		Double house_y = null;
 		// 获取工厂，设置缓存大小与临时目录
-		DiskFileItemFactory factory = new DiskFileItemFactory(20 * 1024, new File("F:/temp"));
+		DiskFileItemFactory factory = new DiskFileItemFactory(20 * 1024, new File("E:/temp"));
 		// 获取解析器，设置数据大小限制
 		ServletFileUpload sfu = new ServletFileUpload(factory);
 		sfu.setFileSizeMax(1024 * 1024 * 1024);// 设置单个文件的限制大小
@@ -313,4 +316,211 @@ public class HouseController {
 
 	}
 
+	/////////////////////////
+	//存房屋信息
+	@RequestMapping("/sa.mvc")
+	public String  House(House house){
+
+		houseService.saveHouse(house);
+
+		return "index.jsp";
+	}
+
+	
+	
+	
+	//初始房屋的点
+		@RequestMapping("/sc") 
+		@ResponseBody
+		   public  List<Map<String, Object>> login2() throws IOException{ 
+			System.out.println("sdffsd");
+		   // System.out.println(request.getParameter("name")); 
+			List<House> listhouse;
+			listhouse = houseService.find();
+			
+			//System.out.println(listhouse.get(0).getH_x());
+		     List<Map<String, Object>> listMaps = new ArrayList<Map<String, Object>>();
+		     for(int i = 0;i<listhouse.size();i++){
+		     Map<String,Object> map = new HashMap<String,Object>(); 
+		     map.put("x",listhouse.get(i).getH_x()); 
+		     map.put("y",listhouse.get(i).getH_y());
+		     map.put("content", listhouse.get(i).getH_info());
+		     map.put("add",listhouse.get(i).getH_distric());
+		     listMaps.add(map);
+		     }
+
+		     
+		     return listMaps; 
+		    
+		     
+
+		} 
+		//筛选后的地图
+		@RequestMapping(value="/sd") 
+		@ResponseBody
+		   public  List<Map<String, Object>> login4(String[] check_val,String[] check_val2,String[] check_val3) throws IOException{ 
+			
+			//System.out.print("bbbbbb");
+			
+			double[] ds  = new double[check_val.length]; 
+		     double[] cs  = new double[check_val.length]; 
+		     double[] ds2  = new double[check_val2.length]; 
+		     double[] cs2  = new double[check_val2.length]; 
+		     String[] ds3  = new String[check_val3.length]; 
+		     List<House> listhouse;
+		     List<House> listhouse2;
+		     List<House> listhouse3;
+		     //start
+		     if(check_val[0].equals("1000")){listhouse = houseService.find();//若为空全部查询
+		  //   System.out.println(listhouse.get(0).getH_x());
+		     }
+			else{
+		     for(int j=0;j<check_val.length-1;j++ ){ 
+			
+		    	 ds[j]=Double.parseDouble(check_val[j]);
+		    	 cs[j]=ds[j]+49;
+		    	 
+			}
+		 	listhouse = houseService.find2(ds,cs);
+			}
+		     //end
+		     //start
+		     if(check_val2[0].equals("1000")){listhouse2 = houseService.find();//若为空全部查询
+		     }
+			else{
+		     for(int j=0;j<check_val2.length-1;j++ ){ 
+			
+		    	 ds2[j]=Double.parseDouble(check_val2[j]);
+		    	 cs2[j]=ds2[j]+49;
+		    	 
+			}
+		 	listhouse2 = houseService.find3(ds2,cs2);
+			}
+		     if(check_val3[0].equals("1000")){listhouse3 = houseService.find();//若为空全部查询
+		     }
+			else{
+				 for(int j=0;j<check_val3.length-1;j++ ){ 
+				 ds3[j]= check_val3[j];
+				//System.out.println(ds3[j]);
+				 }
+				listhouse3 = houseService.find4(ds3);
+			}
+		     
+		     
+		     //end
+		     listhouse.retainAll(listhouse2);
+		     listhouse.retainAll(listhouse3);
+		     List<Map<String, Object>> listMaps = new ArrayList<Map<String, Object>>();
+		     for(int i = 0;i<listhouse.size();i++){
+		     Map<String,Object> map = new HashMap<String,Object>(); 
+		     map.put("x",listhouse.get(i).getH_x()); 
+		     map.put("y",listhouse.get(i).getH_y());
+		     map.put("content", listhouse.get(i).getH_info());
+		     map.put("add",listhouse.get(i).getH_distric());
+		     listMaps.add(map);
+		     }
+		     return listMaps; 
+		}
+		
+		
+		
+		//newpage 用来显示的
+		@RequestMapping(value="/se",method=RequestMethod.GET)
+		public ModelAndView  findse(HttpServletRequest request,HttpSession session){
+			      
+			//  String s =           request.getParameter("y");
+			List<House> listhouse;
+		    listhouse = houseService.find();
+		    List<String> address = new ArrayList<String>();
+		    for(int i =0 ;i<listhouse.size();i++){
+		    	if(!(address.contains(listhouse.get(i).getH_distric()))){
+		        address.add(listhouse.get(i).getH_distric());
+		    	}
+		    }
+		    
+			ModelAndView mv   =  new ModelAndView();
+			mv.addObject("house", address);
+			mv.setViewName("/finddisti.jsp");
+			return mv;
+		}
+		//newpage 用来翻页的
+		@RequestMapping(value="/sf")
+		@ResponseBody
+		public List<Map<String, Object>> sf()throws IOException{
+			//System.out.println(request.getParameter("check_val")); 
+			List<House> listhouse;
+			listhouse = houseService.find();
+		     
+		     List<Map<String, Object>> listMaps = new ArrayList<Map<String, Object>>();
+		     for(int i = 0;i<listhouse.size();i++){
+		     Map<String,Object> map = new HashMap<String,Object>(); 
+		     map.put("x",listhouse.get(i).getH_x()); 
+		     map.put("y",listhouse.get(i).getH_y());
+		     map.put("content", listhouse.get(i).getH_info());
+		     map.put("add",listhouse.get(i).getH_info());
+		     listMaps.add(map);
+		     }
+
+		     
+		     return listMaps; 
+		}
+
+
+		@RequestMapping(value="/sg") 
+		@ResponseBody
+		 public  List<Map<String, Object>> sg(double a1,double a2,double b1,double b2) throws IOException{ 
+
+			//System.out.print("bbbbbb");
+			List<House> listhouse;
+			
+			listhouse = houseService.find5(a1,a2,b1,b2);
+		   
+		   List<Map<String, Object>> listMaps = new ArrayList<Map<String, Object>>();
+		   for(int i = 0;i<listhouse.size();i++){
+		   Map<String,Object> map = new HashMap<String,Object>(); 
+		   map.put("x",listhouse.get(i).getH_x()); 
+		   map.put("y",listhouse.get(i).getH_y());
+		   map.put("content", listhouse.get(i).getH_info());
+		   map.put("add",listhouse.get(i).getH_distric());
+		   listMaps.add(map);
+		   }
+
+		   
+		   return listMaps; 
+		  
+		   
+
+		} 
+
+		@RequestMapping(value="/test3") 
+		@ResponseBody
+		   public Map<String, Object> login3(double lng,double lat) throws IOException{ 
+		
+			System.out.print("bbbbbb");
+			List<House> listhouse;
+			
+			listhouse = houseService.find6(lng,lat);
+			 
+			   Map<String,Object> map = new HashMap<String,Object>(); 
+			   map.put("name",listhouse.get(0).getH_name());
+			   map.put("x",listhouse.get(0).getH_x()); 
+			   map.put("y",listhouse.get(0).getH_y());
+			   map.put("content", listhouse.get(0).getH_info());
+			   map.put("province",listhouse.get(0).getH_province());
+			   map.put("city",listhouse.get(0).getH_city());
+			   map.put("distric",listhouse.get(0).getH_distric());
+			   map.put("acreage",listhouse.get(0).getH_area());
+			   map.put("housetype",listhouse.get(0).getH_houseType());
+			   map.put("H_type",listhouse.get(0).getH_type());
+			   map.put("price",listhouse.get(0).getH_money());
+			   map.put("RB",listhouse.get(0).getH_RB());
+			   map.put("url",listhouse.get(0).getH_url());
+			return map;
+		}
+
+		    
+	
+
+	
 }
+		

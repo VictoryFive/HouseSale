@@ -385,9 +385,9 @@ div#inner {
 			var x = result.h_x;
 			var y = result.h_y;
 			var con = result.h_info;
-			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='../static"+url+"'></div>"
+			item = "<li id='list_inner1'><div id='list_div'><img id='imgstyle' alt='11' src='.."+url+"'></div>"
 					+ "<div id='list_div' style='width:350px;'><ul style='margin-left:35px;'><li id='nli'>"
-					+ "<a id='mainA' href='onehouse2.jsp?name="
+					+ "<a id='mainA' href='../onehouse.jsp?name="
 					+ name
 					+ "&add="
 					+ add
@@ -427,7 +427,7 @@ div#inner {
 					+ area
 					+ "㎡</span></li><li id='nli'><span id='span1'>均价:</span>"
 					+ "<span id='span2' style='color: #f15044; font-weight: bold;'>"
-					+ date
+					+ con
 					+ "元/平</span></li><li id='nli'><span id='span1'>总价:</span>"
 					+ "<span id='span2'>"
 					+ money
@@ -644,7 +644,7 @@ div#inner {
 				<option>总价</option>
 				<option>80万以下</option>
 				<option>80-100万</option>
-				<option>100-15万</option>
+				<option>100-150万</option>
 				<option>150-200万</option>
 				<option>200-300万</option>
 				<option>300-500万</option>
