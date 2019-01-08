@@ -20,6 +20,7 @@ public interface HouseDao {
 			@Param(value = "maxArea") double maxarea, @Param(value = "minMoney") double minmoney,
 			@Param(value = "maxMoney") double maxmoney, @Param(value = "type") String type,
 			@Param(value = "RB") String RB, @Param(value = "EscOrDesc") String EscOrDesc);
+<<<<<<< HEAD
 
 	List<House> find();
 
@@ -33,4 +34,26 @@ public interface HouseDao {
 
 	List<House> find6(double x, double y);
 
+=======
+	
+	List<House> find();
+	List<House> find2(double a,double b);
+	List<House> find3(double a,double b);
+	List<House> find4(String a);
+	List<House> find5(double a1,double a2,double b1,double b2);
+	List<House> find6(double x,double y);
+	
+	
+//≤‚ ‘
+	/*List<House> find2();
+	List<House> find8(double a,double b);
+	List<House> find4(double a,double b);
+	List<House> find5(String a);
+	List<House> find6(double a1,double a2,double b1,double b2);
+	List<House> find7(double x,double y);*/
+	
+	
+	
+	
+>>>>>>> 2d1a94381b48b3427abd853cd024fac3d284c139
 }
