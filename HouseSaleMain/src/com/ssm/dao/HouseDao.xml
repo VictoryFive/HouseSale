@@ -94,34 +94,4 @@ select * from house where h_x = #{0} and  h_y = #{1}
 
 
 
-
-
-<select id="find" resultType="House">
-select * from house 
-</select>
-
-<select id="find2" resultType="House">
-select * from house where h_money  between #{0} and #{1}	
-</select>
-
-<select id="find3" resultType="House">
-select * from house where h_area  between #{0} and #{1}	
-</select>
-
-<select id="find4" resultType="House">
-select * from house where h_type  between #{0} and #{1}	
-</select>
-
-<select id="find5" resultType="House">
-select * from house where h_x  between #{0} and #{1} and  h_y  between #{2} and #{3}
-</select>
-
-
-<select id="find6" resultType="House">
-select * from house where h_x = #{0} and  h_y = #{1}
-</select>
-
-
-
-
 </mapper>
