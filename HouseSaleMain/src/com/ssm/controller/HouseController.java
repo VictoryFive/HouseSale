@@ -59,7 +59,7 @@ public class HouseController {
 		Double house_y = null;
 
 		// 获取工厂，设置缓存大小与临时目录
-		DiskFileItemFactory factory = new DiskFileItemFactory(20 * 1024, new File("E:/temp"));
+		DiskFileItemFactory factory = new DiskFileItemFactory(20 * 1024, new File("F:/temp"));
 		// 获取解析器，设置数据大小限制
 		ServletFileUpload sfu = new ServletFileUpload(factory);
 		sfu.setFileSizeMax(1024 * 1024 * 1024);// 设置单个文件的限制大小
